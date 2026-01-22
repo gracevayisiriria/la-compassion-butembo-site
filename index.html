@@ -17,6 +17,7 @@
             --success: #2d8c4a; /* Vert espoir */
             --gold-light: #f4e4b7;
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --navbar-text: var(--dark);
         }
 
         [data-theme="dark"] {
@@ -24,6 +25,7 @@
             --dark: #f0f0f0;
             --primary: #3a7bd5;
             --secondary: #e6b980;
+            --navbar-text: white;
         }
 
         * {
@@ -99,15 +101,21 @@
         }
 
         [data-theme="dark"] .navbar {
-            background: rgba(15, 20, 25, 0.95) !important;
+            background: rgba(15, 20, 25, 1) !important;
             border-bottom: 3px solid var(--secondary);
+        }
+
+        [data-theme="dark"] .navbar .navbar-brand {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
         }
 
         .navbar-brand {
             font-family: 'Merriweather', serif;
             font-weight: 800;
             font-size: 1.8rem;
-            color: var(--primary) !important;
+            color: var(--dark) !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -208,6 +216,11 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
         }
 
         .hero-subtitle {
@@ -1111,7 +1124,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-church"></i>
-                <span class="full-name">Église La Compassion Butembo</span>
+                <span class="full-name">La Compassion Butembo</span>
                 <span class="short-name">Compassion Butembo</span>
             </a>
 
