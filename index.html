@@ -1,0 +1,1870 @@
+# Site Web de l'Église La Compassion Butembo - Version 2026 Redesign
+
+```html
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Église La Compassion Butembo | Église Évangélique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e4d8c; /* Bleu royal profond */
+            --secondary: #c69c6d; /* Or africain */
+            --accent: #8b0000; /* Rouge pourpre profond */
+            --light: #f8f5f0; /* Beige clair chaleureux */
+            --dark: #1a1a2e; /* Bleu nuit profond */
+            --success: #2d8c4a; /* Vert espoir */
+            --gold-light: #f4e4b7;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --light: #0f1419;
+            --dark: #f0f0f0;
+            --primary: #3a7bd5;
+            --secondary: #e6b980;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
+            line-height: 1.7;
+        }
+
+        .scripture-verse {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            color: var(--accent);
+            border-left: 4px solid var(--secondary);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-size: 1.2rem;
+            background: rgba(198, 156, 109, 0.1);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .bible-verse {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bible-verse::before {
+            content: '"';
+            position: absolute;
+            font-size: 150px;
+            color: rgba(255,255,255,0.1);
+            top: -30px;
+            left: 20px;
+            font-family: 'Merriweather', serif;
+        }
+
+        .bible-verse .reference {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 10px;
+            display: block;
+            font-style: italic;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--secondary);
+            padding: 15px 0;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 20, 25, 0.95) !important;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .navbar-brand {
+            font-family: 'Merriweather', serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand i {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 8px;
+            color: var(--dark) !important;
+            position: relative;
+            padding: 8px 15px !important;
+            border-radius: 25px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+            background: rgba(30, 77, 140, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(30, 77, 140, 0.3);
+        }
+
+        .theme-toggle-container {
+            margin-left: 15px;
+        }
+
+        .theme-toggle-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(30, 77, 140, 0.3);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: rotate(30deg) scale(1.1);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(26, 45, 77, 0.85), rgba(26, 45, 77, 0.9)),
+                        url('https://images.unsplash.com/photo-1534237710431-e2fc698436d0?q=80&w=2070&auto=format&fit=crop') center/cover fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn-church {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary-church {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+        }
+
+        .btn-primary-church:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(198, 156, 109, 0.4);
+            color: white;
+        }
+
+        .btn-secondary-church {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary-church:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .live-indicator {
+            background: linear-gradient(45deg, #ff0000, #ff6b6b);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--dark);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .pastor-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            height: 100%;
+            background: white;
+        }
+
+        [data-theme="dark"] .pastor-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .pastor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .pastor-img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .pastor-card:hover .pastor-img {
+            transform: scale(1.05);
+        }
+
+        .pastor-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .pastor-name {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .pastor-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .live-stream-section {
+            background: linear-gradient(rgba(15, 25, 40, 0.9), rgba(15, 25, 40, 0.95)),
+                        url('https://images.unsplash.com/photo-1518834103328-4dbb0d8400de?q=80&w=2070&auto=format&fit=crop') center/cover;
+            padding: 100px 0;
+            color: white;
+        }
+
+        .video-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid var(--secondary);
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .chat-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px;
+        }
+
+        .chat-message {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 18px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            animation: slideIn 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            height: 100%;
+            border-left: 5px solid var(--primary);
+        }
+
+        [data-theme="dark"] .event-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-left-color: var(--secondary);
+        }
+
+        .event-date {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .event-date .day {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .event-date .month {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+        }
+
+        .media-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            background: white;
+        }
+
+        [data-theme="dark"] .media-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .media-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .contact-section {
+            background: linear-gradient(rgba(248, 245, 240, 0.95), rgba(248, 245, 240, 0.98)),
+                        url('https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=2036&auto=format&fit=crop') center/cover;
+            padding: 100px 0;
+        }
+
+        [data-theme="dark"] .contact-section {
+            background: linear-gradient(rgba(15, 20, 25, 0.95), rgba(15, 20, 25, 0.98)),
+                        url('https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=2036&auto=format&fit=crop') center/cover;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-control-church {
+            border: 2px solid rgba(30, 77, 140, 0.2);
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--light);
+        }
+
+        .form-control-church:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 77, 140, 0.1);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--dark), #0a0a14);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-logo {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer h5 {
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 12px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .footer-links a::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 20px;
+        }
+
+        .footer-links a:hover::before {
+            left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(30, 77, 140, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 0 0 20px 20px;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        [data-theme="dark"] .mobile-nav {
+            background: rgba(15, 20, 25, 0.98);
+        }
+
+        .mobile-nav.show {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .navbar-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .theme-toggle-container {
+                margin-left: auto;
+                margin-right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card,
+            .pastor-card,
+            .event-card,
+            .media-card {
+                margin-bottom: 30px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn-church {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(30, 77, 140, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/243999999999?text=Bonjour%20Église%20La%20Compassion%20Butembo%2C%20je%20vous%20contacte%20depuis%20le%20site%20web" 
+       class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-church"></i>
+                Compassion Butembo
+            </a>
+
+            <button class="navbar-toggler mobile-nav-toggle" type="button" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="d-flex align-items-center">
+                <div class="theme-toggle-container">
+                    <button class="theme-toggle-btn" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#accueil">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apropos">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#direct">Culte en Direct</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#evenements">Événements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mediatheque">Médiathèque</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a class="nav-link active d-block py-3" href="#accueil">Accueil</a>
+        <a class="nav-link d-block py-3" href="#apropos">À propos</a>
+        <a class="nav-link d-block py-3" href="#direct">Culte en Direct</a>
+        <a class="nav-link d-block py-3" href="#evenements">Événements</a>
+        <a class="nav-link d-block py-3" href="#mediatheque">Médiathèque</a>
+        <a class="nav-link d-block py-3" href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="accueil">
+        <span class="live-indicator">
+            <span class="live-dot"></span>
+            EN DIRECT DIMANCHE 10:00
+        </span>
+        
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 hero-content fade-in">
+                    <h1 class="hero-title">Église La Compassion Butembo</h1>
+                    <p class="hero-subtitle">Une communauté chrétienne dynamique au cœur du Nord-Kivu, dédiée à répandre l'amour de Christ et à servir avec compassion.</p>
+                    
+                    <!-- Verset biblique principal -->
+                    <div class="bible-verse">
+                        <p>"Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle."</p>
+                        <span class="reference">Jean 3:16</span>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="#direct" class="btn btn-primary-church">
+                            <i class="fas fa-play-circle"></i>
+                            Regarder le Direct
+                        </a>
+                        <a href="#evenements" class="btn btn-secondary-church">
+                            <i class="fas fa-calendar-alt"></i>
+                            Prochains Événements
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section class="py-5" id="apropos">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Notre Église</h2>
+                <p>Découvrez la mission, la vision et les valeurs qui nous animent</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-4 slide-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cross"></i>
+                        </div>
+                        <h4>Notre Mission</h4>
+                        <p>Prêcher l'Évangile de Jésus-Christ, faire des disciples engagés et manifester l'amour de Dieu par des actions concrètes de compassion.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 slide-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Notre Vision</h4>
+                        <p>Être une église influente qui transforme la communauté de Butembo par la puissance de l'Évangile et l'amour pratique.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 slide-up">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4>Nos Valeurs</h4>
+                        <p>Foi en Christ, amour fraternel, intégrité, service communautaire, excellence dans tout ce que nous faisons pour la gloire de Dieu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Équipe pastorale -->
+            <div class="section-header slide-up">
+                <h2>Notre Équipe Pastorale</h2>
+                <p>Rencontrez les serviteurs qui guident notre église</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="pastor-card">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=1000&auto=format&fit=crop" 
+                             class="pastor-img" alt="Pasteur Marcello">
+                        <div class="pastor-info">
+                            <h4 class="pastor-name">Pasteur Marcello</h4>
+                            <span class="pastor-role">Pasteur Principal</span>
+                            <p>Serviteur de Dieu dévoué avec plus de 20 ans d'expérience dans le ministère.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="pastor-card">
+                        <img src="https://images.unsplash.com/photo-1570211776045-603a8b632b4a?q=80&w=1000&auto=format&fit=crop" 
+                             class="pastor-img" alt="Pasteure Sarah">
+                        <div class="pastor-info">
+                            <h4 class="pastor-name">Pasteure Sarah</h4>
+                            <span class="pastor-role">Responsable Adoration</span>
+                            <p>Passionnée par la louange et l'adoration, elle dirige notre ministère de musique.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="pastor-card">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=1000&auto=format&fit=crop" 
+                             class="pastor-img" alt="Diacre Jean">
+                        <div class="pastor-info">
+                            <h4 class="pastor-name">Diacre Jean</h4>
+                            <span class="pastor-role">Responsable Jeunesse</span>
+                            <p>Dévoué à l'encadrement des jeunes et à leur croissance spirituelle.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="pastor-card">
+                        <img src="https://images.unsplash.com/photo-1570211776045-603a8b632b4a?q=80&w=1000&auto=format&fit=crop" 
+                             class="pastor-img" alt="Diacre Rachel">
+                        <div class="pastor-info">
+                            <h4 class="pastor-name">Diacre Rachel</h4>
+                            <span class="pastor-role">Responsable Bienfaisance</span>
+                            <p>Coordonne nos actions sociales et programmes d'aide communautaire.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verset biblique -->
+            <div class="scripture-verse slide-up mt-5">
+                <p>"Nous qui sommes plusieurs, nous formons un seul corps en Christ, et nous sommes tous membres les uns des autres."</p>
+                <span class="reference">Romains 12:5</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culte en Direct -->
+    <section class="live-stream-section" id="direct">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Culte en Direct</h2>
+                <p>Rejoignez-nous en ligne pour notre célébration du dimanche</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 slide-up">
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <!-- Intégration YouTube Live -->
+                            <iframe src="https://www.youtube.com/embed/live_stream?channel=UC_x5XG1OV2P6uZZ5FSM9Ttw&autoplay=1&mute=0" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-white">
+                        <h3>Culte du Dimanche</h3>
+                        <p><strong>Prédicateur:</strong> Pasteur Marcello</p>
+                        <p><strong>Thème:</strong> "La puissance transformatrice de l'amour de Christ"</p>
+                        <p><strong>Heure:</strong> Dimanche 10h00 - 12h30</p>
+                        <p><strong>Lieu:</strong> Avenue de la Compassion, Quartier Ngali, Butembo</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 slide-up">
+                    <div class="chat-container">
+                        <h4 class="mb-4">Chat en Direct</h4>
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Messages de chat générés par JavaScript -->
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Votre message de prière..." id="chatInput">
+                            <button class="btn btn-primary-church" id="sendMessage">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Événements -->
+    <section class="py-5" id="evenements">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Événements à Venir</h2>
+                <p>Participez à nos activités et rencontres spirituelles</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">28</span>
+                            <span class="month">JAN</span>
+                        </div>
+                        <div class="p-4">
+                            <h5>Culte du Dimanche</h5>
+                            <p class="text-muted">10h00 - Salle principale</p>
+                            <p>Célébration dominicale avec prédication, louange et sainte cène.</p>
+                            <a href="#" class="btn btn-sm btn-primary-church">Détails</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">31</span>
+                            <span class="month">JAN</span>
+                        </div>
+                        <div class="p-4">
+                            <h5>Étude Biblique</h5>
+                            <p class="text-muted">18h00 - Salle de réunion</p>
+                            <p>Étude approfondie de l'Évangile de Jean, chapitre par chapitre.</p>
+                            <a href="#" class="btn btn-sm btn-primary-church">S'inscrire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">02</span>
+                            <span class="month">FÉV</span>
+                        </div>
+                        <div class="p-4">
+                            <h5>Night Worship</h5>
+                            <p class="text-muted">20h00 - Salle des jeunes</p>
+                            <p>Soirée de louange et d'adoration spéciale pour les jeunes.</p>
+                            <a href="#" class="btn btn-sm btn-primary-church">Détails</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 slide-up">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">05</span>
+                            <span class="month">FÉV</span>
+                        </div>
+                        <div class="p-4">
+                            <h5>Conférence de Réveil</h5>
+                            <p class="text-muted">19h00 - Auditorium</p>
+                            <p>Conférence spéciale de réveil spirituel avec invités spéciaux.</p>
+                            <a href="#" class="btn btn-sm btn-primary-church">Programme</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verset biblique -->
+            <div class="scripture-verse slide-up mt-5">
+                <p>"N'abandonnons pas notre assemblée, comme c'est la coutume de quelques-uns; mais exhortons-nous réciproquement."</p>
+                <span class="reference">Hébreux 10:25</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Médiathèque -->
+    <section class="py-5 bg-light" id="mediatheque">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Médiathèque</h2>
+                <p>Redécouvrez nos prédications et enseignements</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 slide-up">
+                    <div class="media-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                    title="Prédication" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <h5>La foi qui déplace les montagnes</h5>
+                            <p class="text-muted">Pasteur Marcello - 21 Janvier 2024</p>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-eye me-1"></i> 2,548 vues</span>
+                                <span><i class="fas fa-heart me-1"></i> 156</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 slide-up">
+                    <div class="media-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                    title="Prédication" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <h5>L'espérance en temps d'épreuve</h5>
+                            <p class="text-muted">Pasteure Sarah - 14 Janvier 2024</p>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-eye me-1"></i> 1,987 vues</span>
+                                <span><i class="fas fa-heart me-1"></i> 134</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 slide-up">
+                    <div class="media-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                    title="Prédication" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <h5>La grâce qui suffit</h5>
+                            <p class="text-muted">Diacre Jean - 7 Janvier 2024</p>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-eye me-1"></i> 3,215 vues</span>
+                                <span><i class="fas fa-heart me-1"></i> 189</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 slide-up">
+                <a href="#" class="btn btn-primary-church">
+                    <i class="fas fa-play-circle me-2"></i>
+                    Voir plus de vidéos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes là pour vous écouter et prier avec vous</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 slide-up">
+                    <div class="contact-form">
+                        <h4 class="mb-4">Envoyez-nous un message</h4>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control form-control-church" placeholder="Votre nom complet" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control form-control-church" placeholder="Votre adresse email" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select form-control-church">
+                                    <option>Sujet du message</option>
+                                    <option>Demande de prière</option>
+                                    <option>Informations sur l'église</option>
+                                    <option>Devenir membre</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control form-control-church" rows="5" placeholder="Votre message..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary-church w-100">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 slide-up">
+                    <div class="ps-lg-5">
+                        <h4 class="mb-4">Nos coordonnées</h4>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-map-marker-alt text-primary me-3"></i> Adresse</h5>
+                            <p class="ms-5">Avenue de la Compassion, Quartier Ngali<br>
+                            Butembo, Nord-Kivu<br>
+                            République Démocratique du Congo</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-phone text-primary me-3"></i> Téléphone</h5>
+                            <p class="ms-5">+243 999 999 999<br>
+                            +243 888 888 888</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-envelope text-primary me-3"></i> Email</h5>
+                            <p class="ms-5">contact@compassionbutembo.org<br>
+                            priere@compassionbutembo.org</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5><i class="fas fa-clock text-primary me-3"></i> Horaires d'ouverture</h5>
+                            <p class="ms-5">Lundi - Vendredi: 8h00 - 17h00<br>
+                            Samedi: 9h00 - 13h00<br>
+                            Dimanche: Culte à 10h00</p>
+                        </div>
+                        
+                        <h5 class="mb-3">Suivez-nous</h5>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verset biblique final -->
+            <div class="bible-verse slide-up mt-5">
+                <p>"Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos."</p>
+                <span class="reference">Matthieu 11:28</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">Compassion Butembo</div>
+                    <p>Une communauté de foi, d'espérance et d'amour. Nous existons pour glorifier Dieu et servir notre prochain avec compassion.</p>
+                    <p><i class="fas fa-praying-hands me-2"></i> "Que la grâce de notre Seigneur Jésus-Christ soit avec vous tous."</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Navigation</h5>
+                    <div class="footer-links">
+                        <a href="#accueil">Accueil</a>
+                        <a href="#apropos">À propos</a>
+                        <a href="#direct">Culte en Direct</a>
+                        <a href="#evenements">Événements</a>
+                        <a href="#mediatheque">Médiathèque</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Ministères</h5>
+                    <div class="footer-links">
+                        <a href="#">École du Dimanche</a>
+                        <a href="#">Groupe de Jeunes</a>
+                        <a href="#">Femmes de Foi</a>
+                        <a href="#">Hommes Vaillants</a>
+                                                <a href="#">Chorale Angélique</a>
+                        <a href="#">Actions Sociales</a>
+                        <a href="#">École Biblique</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Inscrivez-vous pour recevoir nos actualités et événements.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Votre email">
+                        <button class="btn btn-primary-church" type="button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-top border-secondary mt-5 pt-4 text-center">
+                <p>&copy; 2026 Église La Compassion Butembo. Tous droits réservés.</p>
+                <p class="small">Conçu avec <i class="fas fa-heart text-danger"></i> pour la gloire de Dieu</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 500);
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            themeIcon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Charger le thème sauvegardé
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeIcon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+
+        // Sticky Navigation
+        const navbar = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('sticky-nav');
+            } else {
+                navbar.classList.remove('sticky-nav');
+            }
+        });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Navigation
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileLinks = mobileNav.querySelectorAll('a');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('show');
+            const icon = mobileToggle.querySelector('i');
+            icon.className = mobileNav.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('show');
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+
+        // Chat Simulation
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageBtn = document.getElementById('sendMessage');
+
+        const sampleMessages = [
+            { name: "Marie K.", message: "Gloire à Dieu pour ce culte !", time: "10:15" },
+            { name: "Jean P.", message: "Amen ! La prédication est puissante", time: "10:20" },
+            { name: "Sarah M.", message: "Priez pour ma famille s'il vous plaît", time: "10:22" },
+            { name: "David L.", message: "Merci pour le direct, je suis en voyage", time: "10:25" },
+            { name: "Pasteur Marcello", message: "Soyez tous bénis au nom de Jésus !", time: "10:30" }
+        ];
+
+        function addMessage(name, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message';
+            messageDiv.innerHTML = `
+                <strong>${name}:</strong> ${message}
+                <div class="small opacity-75 mt-1">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Ajouter les messages d'exemple
+        sampleMessages.forEach(msg => {
+            addMessage(msg.name, msg.message);
+        });
+
+        sendMessageBtn.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage("Vous", message);
+                chatInput.value = '';
+                
+                // Réponse automatique
+                setTimeout(() => {
+                    const responses = [
+                        "Amen ! Que Dieu vous bénisse",
+                        "Nous prions avec vous",
+                        "Gloire à Dieu !",
+                        "Merci pour votre partage",
+                        "Que le Seigneur vous fortifie"
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage("Modérateur", randomResponse);
+                }, 1000);
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessageBtn.click();
+            }
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulation d'envoi
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
+                contactForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec classe slide-up
+        document.querySelectorAll('.slide-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mettre à jour l'indicateur en direct
+        function updateLiveIndicator() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Dimanche
+            const hour = now.getHours();
+            
+            const liveIndicator = document.querySelector('.live-indicator');
+            if (day === 0 && hour >= 9 && hour < 13) {
+                liveIndicator.style.display = 'inline-flex';
+            } else {
+                liveIndicator.style.display = 'none';
+            }
+        }
+
+        updateLiveIndicator();
+        setInterval(updateLiveIndicator, 60000); // Vérifier chaque minute
+
+        // Horloge en direct
+        function updateLiveClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('fr-FR', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            
+            const clockElement = document.querySelector('.live-indicator');
+            if (clockElement) {
+                const text = clockElement.textContent.split('•')[0] + '• ' + timeString;
+                clockElement.querySelector('span').textContent = text;
+            }
+        }
+
+        setInterval(updateLiveClock, 1000);
+
+        // Gestion des liens actifs dans la navigation
+        function setActiveLink() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav .nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveLink);
+
+        // Fonction de recherche dans la médiathèque
+        function initSearch() {
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.className = 'form-control form-control-church mb-4';
+            searchInput.placeholder = 'Rechercher une prédication, un enseignement...';
+            
+            const mediaSection = document.getElementById('mediatheque');
+            const container = mediaSection.querySelector('.container');
+            const header = mediaSection.querySelector('.section-header');
+            
+            header.insertAdjacentElement('afterend', searchInput);
+            
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const mediaCards = mediaSection.querySelectorAll('.media-card');
+                
+                mediaCards.forEach(card => {
+                    const title = card.querySelector('h5').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0.3';
+                    }
+                });
+            });
+        }
+
+        // Initialiser la recherche après le chargement
+        setTimeout(initSearch, 1000);
+
+        // Compteur de vues dynamique
+        function updateViewCounters() {
+            const viewCounters = document.querySelectorAll('.fa-eye').forEach(icon => {
+                const counter = icon.parentElement;
+                let currentViews = parseInt(counter.textContent.replace(/\D/g, ''));
+                if (Math.random() > 0.7) {
+                    currentViews += Math.floor(Math.random() * 5);
+                    counter.innerHTML = `<i class="fas fa-eye me-1"></i> ${currentViews.toLocaleString()} vues`;
+                }
+            });
+        }
+
+        // Mettre à jour les compteurs toutes les 30 secondes
+        setInterval(updateViewCounters, 30000);
+
+        // Système de notifications
+        function showNotification(title, message) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification(title, { body: message, icon: 'https://cdn-icons-png.flaticon.com/512/271/271210.png' });
+            }
+        }
+
+        // Demander la permission pour les notifications
+        if ('Notification' in window) {
+            if (Notification.permission === 'default') {
+                setTimeout(() => {
+                    if (confirm('Souhaitez-vous recevoir des notifications des cultes en direct ?')) {
+                        Notification.requestPermission();
+                    }
+                }, 5000);
+            }
+        }
+
+        // Simuler une notification de culte en direct
+        function simulateLiveNotification() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            
+            // Dimanche à 9h55
+            if (day === 0 && hour === 9 && minute === 55) {
+                showNotification('Culte en direct', 'Le culte du dimanche commence dans 5 minutes ! Rejoignez-nous en ligne.');
+            }
+        }
+
+        // Vérifier toutes les minutes
+        setInterval(simulateLiveNotification, 60000);
+
+        // Lecture automatique du stream
+        function checkAutoPlay() {
+            const videoIframe = document.querySelector('iframe');
+            if (videoIframe && window.innerWidth > 768) {
+                // Forcer la lecture automatique sur desktop
+                const src = videoIframe.src;
+                if (!src.includes('autoplay=1')) {
+                    videoIframe.src = src.replace('autoplay=0', 'autoplay=1');
+                }
+            }
+        }
+
+        // Vérifier après le chargement
+        setTimeout(checkAutoPlay, 2000);
+
+        // Mode hors ligne
+        window.addEventListener('online', () => {
+            showNotification('Connecté', 'Vous êtes de nouveau en ligne.');
+        });
+
+        window.addEventListener('offline', () => {
+            showNotification('Hors ligne', 'Certaines fonctionnalités peuvent être limitées.');
+        });
+
+        // Partage sur les réseaux sociaux
+        function initSocialShare() {
+            const shareButtons = document.querySelectorAll('.social-share');
+            shareButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = window.location.href;
+                    const title = document.title;
+                    
+                    if (button.classList.contains('facebook')) {
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+                    } else if (button.classList.contains('twitter')) {
+                        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
+                    } else if (button.classList.contains('whatsapp')) {
+                        window.open(`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`, '_blank');
+                    }
+                });
+            });
+        }
+
+        // Initialiser le partage social
+        initSocialShare();
+
+        // Effet parallaxe sur l'héros
+        function initParallax() {
+            const hero = document.querySelector('.hero-section');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * 0.5;
+                if (hero) {
+                    hero.style.backgroundPosition = `center ${rate}px`;
+                }
+            });
+        }
+
+        // Désactiver le parallaxe sur mobile
+        if (window.innerWidth > 768) {
+            initParallax();
+        }
+
+        // Système de favoris pour les vidéos
+        function initFavorites() {
+            const likeButtons = document.querySelectorAll('.fa-heart').forEach(heart => {
+                heart.addEventListener('click', function() {
+                    this.classList.toggle('fas');
+                    this.classList.toggle('far');
+                    
+                    if (this.classList.contains('fas')) {
+                        this.style.color = 'var(--accent)';
+                        // Animation
+                        this.animate([
+                            { transform: 'scale(1)' },
+                            { transform: 'scale(1.3)' },
+                            { transform: 'scale(1)' }
+                        ], {
+                            duration: 300
+                        });
+                    } else {
+                        this.style.color = '';
+                    }
+                });
+            });
+        }
+
+        initFavorites();
+
+        // Géolocalisation pour les événements
+        function initGeolocation() {
+            if ('geolocation' in navigator) {
+                const locationBtn = document.createElement('button');
+                locationBtn.className = 'btn btn-sm btn-secondary-church mt-2';
+                locationBtn.innerHTML = '<i class="fas fa-map-marker-alt me-1"></i> Me localiser';
+                locationBtn.addEventListener('click', () => {
+                    navigator.geolocation.getCurrentPosition((position) => {
+                        const { latitude, longitude } = position.coords;
+                        alert(`Votre position: ${latitude.toFixed(4)}, ${longitude.toFixed(4)}\n\nL'église est située à l'adresse: Avenue de la Compassion, Quartier Ngali, Butembo`);
+                    }, (error) => {
+                        alert('Impossible de récupérer votre position. Veuillez vérifier les permissions de géolocalisation.');
+                    });
+                });
+                
+                // Ajouter le bouton dans la section contact
+                const contactSection = document.getElementById('contact');
+                const addressDiv = contactSection.querySelector('h5:first-of-type');
+                addressDiv.parentElement.appendChild(locationBtn);
+            }
+        }
+
+        // Initialiser la géolocalisation
+        setTimeout(initGeolocation, 3000);
+
+        // Système de lecture audio pour les versets
+        function initAudioVerses() {
+            const verses = document.querySelectorAll('.bible-verse, .scripture-verse');
+            verses.forEach(verse => {
+                const audioBtn = document.createElement('button');
+                audioBtn.className = 'btn btn-sm btn-outline-primary ms-2';
+                audioBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                audioBtn.title = 'Écouter le verset';
+                
+                audioBtn.addEventListener('click', () => {
+                    const text = verse.querySelector('p').textContent;
+                    if ('speechSynthesis' in window) {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = 'fr-FR';
+                        utterance.rate = 0.9;
+                        speechSynthesis.speak(utterance);
+                    } else {
+                        alert('La lecture vocale n\'est pas supportée par votre navigateur.');
+                    }
+                });
+                
+                verse.querySelector('p').appendChild(audioBtn);
+            });
+        }
+
+        // Initialiser la lecture audio
+        setTimeout(initAudioVerses, 4000);
+
+        console.log('Site web de l\'Église La Compassion Butembo - Version 2026 chargée avec succès!');
+    </script>
+</body>
+</html>
