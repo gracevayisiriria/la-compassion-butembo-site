@@ -710,69 +710,286 @@
         }
 
         /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
-            
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
             .section-header h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
-            
+
             .navbar-nav {
                 display: none;
             }
-            
+
             .mobile-nav-toggle {
                 display: block;
             }
-            
+
             .theme-toggle-container {
                 margin-left: auto;
                 margin-right: 15px;
             }
-        }
 
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            
             .feature-card,
             .pastor-card,
             .event-card,
             .media-card {
+                margin-bottom: 20px;
+            }
+
+            .video-container {
+                margin-bottom: 20px;
+            }
+
+            .chat-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 80vh;
+                padding: 100px 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .feature-card,
+            .pastor-card,
+            .event-card,
+            .media-card {
+                margin-bottom: 25px;
+                padding: 30px 20px;
+            }
+
+            .pastor-img {
+                height: 250px;
+            }
+
+            .contact-form {
+                padding: 20px;
                 margin-bottom: 30px;
             }
-            
-            .contact-form {
-                padding: 25px;
+
+            .live-stream-section {
+                padding: 80px 0;
+            }
+
+            .video-container {
+                border-radius: 15px;
+            }
+
+            .chat-container {
+                height: 250px;
+                padding: 20px;
+            }
+
+            .footer {
+                padding: 60px 0 20px;
             }
         }
 
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
-            
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
             .btn-church {
-                padding: 12px 25px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .feature-card,
+            .pastor-card,
+            .event-card,
+            .media-card {
+                padding: 25px 15px;
+            }
+
+            .pastor-info {
+                padding: 20px;
+            }
+
+            .pastor-name {
+                font-size: 1.3rem;
+            }
+
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.5rem;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 80px;
+                right: 15px;
+            }
+
+            .live-indicator {
+                top: 15px;
+                right: 15px;
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+
+            .social-icons {
+                gap: 12px;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .contact-section {
+                padding: 80px 0;
+            }
+
+            .bible-verse {
+                padding: 20px;
+                font-size: 1.1rem;
+            }
+
+            .scripture-verse {
+                padding: 15px;
                 font-size: 1rem;
             }
-            
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 70vh;
+                padding: 80px 0;
+            }
+
+            .hero-title {
+                font-size: 1.4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .btn-church {
+                padding: 8px 18px;
+                font-size: 0.85rem;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .feature-card,
+            .pastor-card,
+            .event-card,
+            .media-card {
+                padding: 20px 12px;
+            }
+
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .pastor-img {
+                height: 200px;
+            }
+
+            .pastor-name {
+                font-size: 1.2rem;
+            }
+
+            .event-date .day {
+                font-size: 1.8rem;
+            }
+
+            .event-date .month {
+                font-size: 0.9rem;
+            }
+
+            .video-container {
+                border-radius: 10px;
+            }
+
+            .chat-container {
+                height: 200px;
+                padding: 15px;
+            }
+
+            .chat-message {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .contact-form {
+                padding: 15px;
+            }
+
+            .form-control-church {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+
+            .footer-logo {
+                font-size: 1.8rem;
+            }
+
+            .footer h5 {
+                font-size: 1.2rem;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
             }
         }
 
@@ -851,7 +1068,7 @@
 </head>
 <body>
     <!-- Loader -->
-    <div class="loader" id="loader">
+    <div class="loader hidden" id="loader">
         <div class="loader-spinner"></div>
     </div>
 
