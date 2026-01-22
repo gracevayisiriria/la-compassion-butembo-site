@@ -116,6 +116,30 @@
             gap: 10px;
         }
 
+        .navbar-brand .full-name {
+            display: inline;
+        }
+
+        .navbar-brand .short-name {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand .full-name {
+                display: none;
+            }
+
+            .navbar-brand .short-name {
+                display: inline;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+        }
+
         .navbar-brand i {
             color: var(--accent);
         }
@@ -1088,7 +1112,8 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-church"></i>
-                Compassion Butembo
+                <span class="full-name">Église La Compassion Butembo</span>
+                <span class="short-name">Compassion Butembo</span>
             </a>
 
             <button class="navbar-toggler mobile-nav-toggle" type="button" id="mobileToggle">
